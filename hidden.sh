@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 _() {
-    YEAR="2001"
+    YEAR="2019"
     echo "GitHub Username: "
     read -r USERNAME
     echo "GitHub Access token: "
@@ -17,15 +17,16 @@ _() {
 
     # Initialize git and create content
     git init
-    echo "**!🤖!**" > README.md
-    git add .
+
 
     # Create multiple commits with different dates
-    for month in {01..12}; do
-        for day in {01..31}; do
+    for month in {19..12}; do
+        for day in {19..31}; do
+            echo "**!🤖!**" > README.md
+            git add .
             GIT_AUTHOR_DATE="${YEAR}-${month}-${day}T18:00:00" \
             GIT_COMMITTER_DATE="${YEAR}-${month}-${day}T18:00:00" \
-            git commit --allow-empty -m "I am the hidden god 🤖!!"
+            git commit --allow-empty -m "💻 + 🤖 = PPhatDev"
         done
     done
 
