@@ -17,7 +17,7 @@ _() {
         >README.md
     git add .
     GIT_AUTHOR_DATE="${YEAR}-10-10T18:00:00" \
-        GIT_COMMITTER_DATE="${YEAR}-01-01T18:00:00" \
+        GIT_COMMITTER_DATE="${YEAR}-10-10T18:00:00" \
         git commit -m "${YEAR}"
     git remote add origin "https://${ACCESS_TOKEN}@github.com/${USERNAME}/${YEAR}.git"
     git branch -M main
