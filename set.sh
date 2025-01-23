@@ -21,8 +21,8 @@ _() {
     git add .
     
     # Set commit dates and create commit
-    GIT_AUTHOR_DATE="2025-01-15T18:00:00" \
-    GIT_COMMITTER_DATE="2025-01-15T18:00:00" \
+    GIT_AUTHOR_DATE="2025-01-10T18:00:00" \
+    GIT_COMMITTER_DATE="2025-01-10T18:00:00" \
     git commit -m "2025"
 
     # Setup remote and push
