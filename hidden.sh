@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 _() {
-    YEAR="2025"
+    YEAR="2024"
     echo "GitHub Username: "
     read -r USERNAME
     echo "GitHub Access token: "
@@ -21,8 +21,8 @@ _() {
     git add .
 
     # Set commit dates and create commit
-    GIT_AUTHOR_DATE="${YEAR}-01-10T18:00:00" \
-    GIT_COMMITTER_DATE="${YEAR}-01-10T18:00:00" \
+    GIT_AUTHOR_DATE="${YEAR}-12-22T18:00:00" \
+    GIT_COMMITTER_DATE="${YEAR}-12-22T18:00:00" \
     git commit -m "I am the hidden god!!"
 
     # Setup remote and push
