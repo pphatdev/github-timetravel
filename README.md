@@ -1,1 +1,11 @@
-**1990**
+**Make your GitHub history back to 1990.**
+
+## Travel Back
+
+[Generate a personal access token](https://github.com/settings/tokens/new) on GitHub and copy it.
+
+Run the following script
+
+```bash
+$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/pphatdev/github-old/master/index.sh)"
+```
