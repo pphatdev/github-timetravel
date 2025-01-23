@@ -22,7 +22,7 @@ _() {
 
     # Set commit dates and create commit
     GIT_AUTHOR_DATE="${YEAR}-01-15T18:00:00" \
-    GIT_COMMITTER_DATE="${YEAR}-01-10T15:00:00" \
+    GIT_COMMITTER_DATE="${YEAR}-01-15T18:00:00" \
     git commit -m "Missed!"
 
     # Setup remote and push
