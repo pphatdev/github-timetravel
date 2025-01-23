@@ -35,10 +35,10 @@ _() {
                 continue
             fi
 
-            echo "**!${day}🤖${day}!**" > README.md
+            echo "**!🤖!**\n${day}-${month}-2024: 📃" > README.md
             git add README.md
-            GIT_AUTHOR_DATE="${YEAR}-${month}-${day}T18:00:00" \
-            GIT_COMMITTER_DATE="${YEAR}-${month}-${day}T18:00:00" \
+            GIT_AUTHOR_DATE="2024-${month}-${day}T18:00:00" \
+            GIT_COMMITTER_DATE="2024-${month}-${day}T18:00:00" \
             git commit --allow-empty -m "💻 + 🤖 = PPhatDev"
         done
     done
