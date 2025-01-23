@@ -20,10 +20,24 @@ _() {
     echo "**I am the hidden god!**" > README.md
     git add .
 
-    # Set commit dates and create commit
-    GIT_AUTHOR_DATE="${YEAR}-12-22T18:00:00" \
-    GIT_COMMITTER_DATE="${YEAR}-12-22T18:00:00" \
-    git commit -m "I am the hidden god!!"
+    # Create commits for specific dates
+    DATES=(
+        "${YEAR}-11-13"
+        "${YEAR}-11-14"
+        "${YEAR}-11-15"
+        "${YEAR}-11-18"
+        "${YEAR}-11-18"
+        "${YEAR}-12-01"
+        "${YEAR}-12-21"
+        "${YEAR}-12-22"
+        "${YEAR}-12-28"
+    )
+
+    for date in "${DATES[@]}"; do
+        GIT_AUTHOR_DATE="${date}T18:00:00" \
+        GIT_COMMITTER_DATE="${date}T18:00:00" \
+        git commit --allow-empty -m "I am the hidden god!!"
+    done
 
     # Setup remote and push
     git remote add origin "https://${ACCESS_TOKEN}@github.com/${USERNAME}/hidden.git"
@@ -35,7 +49,7 @@ _() {
     rm -rf "$YEAR"
 
     echo
-    echo "✨ Cool, check your profile now! Your commit should appear in ${YEAR}"
+    echo "✨ Cool, check your profile now! Your commits should appear in ${YEAR}"
 } && _
 
 unset -f _
