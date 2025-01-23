@@ -21,7 +21,7 @@ _() {
     git add .
 
     # Set commit dates and create commit
-    GIT_AUTHOR_DATE="${YEAR}-01-10T18:00:00" \
+    GIT_AUTHOR_DATE="${YEAR}-10-10T18:00:00" \
     GIT_COMMITTER_DATE="${YEAR}-10-10T18:00:00" \
     git commit -m "🥳 Happy birthday to me!"
 
