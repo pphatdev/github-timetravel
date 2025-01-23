@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 _() {
-    YEAR="2025"
+    YEAR="2001"
     echo "GitHub Username: "
     read -r USERNAME
     echo "GitHub Access token: "
@@ -17,16 +17,16 @@ _() {
 
     # Initialize git and create content
     git init
-    echo "**🫡 Welcome back to 2025**" > README.md
+    echo "**Happy Birthday to Me 🥳**" > README.md
     git add .
-    
+
     # Set commit dates and create commit
-    GIT_AUTHOR_DATE="2025-01-10T18:00:00" \
-    GIT_COMMITTER_DATE="2025-01-10T18:00:00" \
-    git commit -m "2025"
+    GIT_AUTHOR_DATE="2001-01-10T18:00:00" \
+    GIT_COMMITTER_DATE="2001-10-10T18:00:00" \
+    git commit -m "2001"
 
     # Setup remote and push
-    git remote add origin "https://${ACCESS_TOKEN}@github.com/${USERNAME}/${YEAR}.git"
+    git remote add origin "https://${ACCESS_TOKEN}@github.com/${USERNAME}/2025.git"
     git branch -M main
     git push -u origin main -f || { echo "Error: Failed to push to remote"; exit 1; }
     
