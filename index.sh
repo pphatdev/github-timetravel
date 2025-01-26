@@ -13,7 +13,7 @@ _() {
 
     cd "${YEAR}" || exit
     git init
-    echo "**🫡Welcome back to ${YEAR}** \
+    echo "**🫡Welcome back to ${YEAR}**: Generated from [https://github.com/pphatdev/github-old](https://github.com/pphatdev/github-old)\
         >README.md
     git add .
     GIT_AUTHOR_DATE="${YEAR}-10-10T18:00:00" \
