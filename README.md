@@ -8,5 +8,5 @@
 3. Goto open `gitbash` Run the following script:
 
 ```bash
-$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/pphatdev/github-old/master/index.sh)"
+$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/pphatdev/github-timetravel/master/index.sh)"
 ```
