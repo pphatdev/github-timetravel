@@ -23,6 +23,18 @@ _() {
     [ -z "$MONTH" ] && MONTH="10"
     [ -z "$DAY" ] && DAY="10"
 
+    # Check if repository already exists on GitHub
+    REPO_EXISTS=$(curl -s -o /dev/null -w "%{http_code}"         -H "Authorization: token $ACCESS_TOKEN"         "https://api.github.com/repos/${USERNAME}/${REPO_NAME}")
+
+    if [ "$REPO_EXISTS" -eq 200 ]; then
+        echo "⚠️ Warning: Repository '${REPO_NAME}' already exists on GitHub."
+        read -p "Do you want to proceed and risk overwriting existing commits? (y/n): " -r CONFIRM
+        if [ "$CONFIRM" != "y" ]; then
+            echo "Aborted."
+            exit 1
+        fi
+    fi
+
     # Create repository directory
     [ ! -d "$REPO_NAME" ] && mkdir "$REPO_NAME"
     cd "${REPO_NAME}" || exit
@@ -39,7 +51,7 @@ This repository was dynamically generated for the year **[YEAR]** using the [git
 ---
 
 ## 📜 Purpose
-This repository simulates a "time travel" effect by backdating a GitHub repository to a specific year, month, and day. It's a fun way to create a historical footprint on your GitHub profile.
+This repository simulates a "time travel" effect by backdating a GitHub repository to a specific year, month, and day.
 
 ---
 
@@ -86,10 +98,14 @@ EOF
     git add .
     GIT_AUTHOR_DATE="${YEAR}-${MONTH}-${DAY}T18:00:00"         GIT_COMMITTER_DATE="${YEAR}-${MONTH}-${DAY}T18:00:00"         git commit -m "${YEAR}"
 
-    # Push to GitHub
+    # Push to GitHub (only force-push if repository is new)
     git remote add origin "https://${ACCESS_TOKEN}@github.com/${USERNAME}/${REPO_NAME}.git"
     git branch -M main
-    git push -u origin main -f
+    if [ "$REPO_EXISTS" -eq 200 ]; then
+        git push -u origin main
+    else
+        git push -u origin main -f
+    fi
 
     # Cleanup
     cd ..
