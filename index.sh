@@ -47,3 +47,56 @@ This repository simulates a "time travel" effect by backdating a GitHub reposito
 1. **Clone this repository** to your local machine:
    ```sh
    git clone https://github.com/[USERNAME]/[REPO_NAME].git
+   ```
+2. **View the commit history** to see the backdated entries:
+   ```sh
+   git log
+   ```
+
+---
+## 📝 How It Works
+- The script creates a new Git repository with a single commit backdated to the specified year, month, and day.
+- The commit message is set to the year (e.g., `2001`).
+- The repository is then pushed to GitHub, creating the illusion of a historical contribution.
+
+---
+## 🔧 Customization
+- **Year**: The year for the backdated commit (default: `2001`).
+- **Month**: The month for the backdated commit (default: `10`).
+- **Day**: The day for the backdated commit (default: `10`).
+
+---
+## 📌 Notes
+- This is purely for fun and does not actually modify GitHub's historical data.
+- Ensure you have a valid **GitHub Access Token** with repository creation permissions.
+- The repository name defaults to the year if not specified.
+
+---
+## 📅 Generated On
+This repository was generated on [CURRENT_DATE].
+EOF
+
+    # Replace placeholders in README.md
+    sed -i "s/\[YEAR\]/$YEAR/g" README.md
+    sed -i "s/\[USERNAME\]/$USERNAME/g" README.md
+    sed -i "s/\[REPO_NAME\]/$REPO_NAME/g" README.md
+    sed -i "s/\[CURRENT_DATE\]/$(date '+%Y-%m-%d')/g" README.md
+
+    # Add and commit files
+    git add .
+    GIT_AUTHOR_DATE="${YEAR}-${MONTH}-${DAY}T18:00:00"         GIT_COMMITTER_DATE="${YEAR}-${MONTH}-${DAY}T18:00:00"         git commit -m "${YEAR}"
+
+    # Push to GitHub
+    git remote add origin "https://${ACCESS_TOKEN}@github.com/${USERNAME}/${REPO_NAME}.git"
+    git branch -M main
+    git push -u origin main -f
+
+    # Cleanup
+    cd ..
+    rm -rf "${REPO_NAME}"
+
+    echo
+    echo "✅ Success! Check your profile: https://github.com/${USERNAME}"
+} && _
+
+unset -f _
